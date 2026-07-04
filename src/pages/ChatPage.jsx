@@ -18,7 +18,7 @@ export default function ChatPage() {
 
   // 1. connect socket on mount
   useEffect(() => {
-    socketRef.current = io("http://localhost:5000", {
+    socketRef.current = io(import.meta.env.VITE_API_URL||"http://localhost:5000", {
       query: { userId: user._id }
     })
 
