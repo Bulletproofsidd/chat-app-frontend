@@ -106,16 +106,43 @@ export default function ChatPage() {
   }
 
   if (!activeContact) {
-    return (
-      <div style={{
-        height: "100vh", background: "#0a0f1e",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        color: "rgba(180,180,200,0.5)", fontFamily: "Inter, sans-serif"
+  return (
+    <div style={{
+      display: "flex",
+      height: "100vh",
+      width: "100%",
+      background: "#0a0f1e",
+      fontFamily: "Inter, sans-serif",
+      overflow: "hidden",
+    }}>
+      {/* still show sidebar */}
+      <Sidebar
+        contacts={contacts}
+        activeId={activeId}
+        onSelect={setActiveId}
+      />
+
+      {/* empty right panel */}
+      <main style={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 16,
+        color: "rgba(180,180,200,0.4)",
       }}>
-        Loading...
-      </div>
-    )
-  }
+        <div style={{ fontSize: 48 }}>💬</div>
+        <div style={{ fontSize: 16, color: "#e8e8f0" }}>
+          Welcome to Chat App
+        </div>
+        <div style={{ fontSize: 13 }}>
+          Add friends from the sidebar to start chatting
+        </div>
+      </main>
+    </div>
+  )
+}
 
   return (
     <div style={{
