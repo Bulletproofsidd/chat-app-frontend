@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react"
 import Sidebar from "../components/Sidebar"
 import ChatHeader from "../components/ChatHeader"
@@ -5,6 +6,8 @@ import ChatBubble from "../components/ChatBubble"
 import InputBar from "../components/InputBar"
 import { useAuth } from "../context/AuthContext"
 import { io } from "socket.io-client"
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000"
 
 export default function ChatPage() {
   const { token, user } = useAuth()
