@@ -35,7 +35,7 @@ export default function ChatPage() {
 
   // 2. fetch all users except logged in user
   useEffect(() => {
-    fetch("http://localhost:5000/api/users", {
+    fetch(`${API_URL}/api/users`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -49,7 +49,7 @@ export default function ChatPage() {
   useEffect(() => {
     if (!activeId) return
 
-    fetch("http://localhost:5000/api/messages/conversation", {
+    fetch(`${API_URL}/api/messages/conversation`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export default function ChatPage() {
       .then(res => res.json())
       .then(data => {
         setConversationId(data._id)  // ← save conversationId
-        return fetch(`http://localhost:5000/api/messages/${data._id}`, {
+        return fetch(`${API_URL}/api/messages/${data._id}`, {
           headers: { Authorization: `Bearer ${token}` }
         })
       })
